@@ -1,7 +1,6 @@
 import {
     Node
 } from './Node.js'
-
 class MyCircularLinkedList {
     constructor(node) {
         if (node === undefined) {
@@ -9,16 +8,13 @@ class MyCircularLinkedList {
             this.tail = null;
             this.current = null;
             this.size = 0;
-            // console.log("constructor null");
         } else {
             this.head = node;
             this.tail = node;
             this.current = node;
             this.size = 1;
-            // console.log("constructor with a node");
         }
     }
-
     pop() {
         let temp = this.head;
         for (let i = 1; i <= this.size - 1; i++) {
@@ -33,7 +29,6 @@ class MyCircularLinkedList {
                 this.size--;
                 return temp;
             }
-            console.log("Node number " + i + " value: " + temp.toString()); // debugging
             temp = temp.getNext();
         }
         return null;
@@ -44,8 +39,6 @@ class MyCircularLinkedList {
         this.current = this.current.getNext();
         return temp;
     }
-
-
     add(node) {
         if (this.size == 0) {
             this.head = node;
@@ -63,32 +56,22 @@ class MyCircularLinkedList {
             this.tail.setNext(this.head);
             this.size++;
         }
-    }
-
-    // printOutAllNodeRecursively() {
-        //     console.log(this.head.toString());
-        //     printOutAllNodeRecursively(this.head)
-        // }
-        
+    } 
     printOutAllNodeRecursively(node, size) { //needs second parameter: size decremented down till 0 and stop calling function
         if (node === undefined) {
             console.log("this is inside the empty parameter recursive method");
             this.printOutAllNodeRecursively(this.head, this.size);
         } 
         else {
-            // console.log(node) //undefined
             if (size == 0){
-                // console.log("Recursive call: size is zero"); // debuggin
                 return null;
             }
             console.log(node.toString());
-            // console.log("size: " + size); //debugging
             if (node.hasNext()) {
                 this.printOutAllNodeRecursively(node.getNext(), --size);
             }
         }
     }
-
     printOutAllNodeProcedurely() {
         this.temp = Node.temp;
         Node.temp = null;
@@ -101,7 +84,6 @@ class MyCircularLinkedList {
         }
     }
 }
-
 export {
     MyCircularLinkedList
 };
